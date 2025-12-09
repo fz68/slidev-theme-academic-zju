@@ -1,0 +1,108 @@
+.slidev-layout {
+  font-family: var(--slidev-font-sans);
+}
+
+:root {
+  /* default theme color */
+  /* can be overrided by uses `themeConfig` option */
+  --slidev-theme-primary: #5d8392;
+
+  /* 列表样式变量 */
+  --title-red: #9C0C13;
+  --capsule-green: #016061;
+  --dark-blue: #13387F;
+  --gray-border: #dddddd;
+  --bullet-blue: #004b9b;
+  --accent-red: #C8151F;
+}
+
+/* 蓝色 bullet */
+.bullet-blue::before {
+  content: "■ ";
+  color: var(--bullet-blue);
+  font-weight: bold;
+}
+
+/* 自定义列表样式 */
+.slidev-layout ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* 第一层列表 - 蓝色方块 */
+.slidev-layout ul > li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0em;
+}
+
+.slidev-layout ul > li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  color: var(--bullet-blue);
+  font-weight: bold;
+}
+
+/* 第二层列表 - 大圆点 */
+.slidev-layout ul ul > li::before {
+  content: "●";
+  font-size: 1.1em;
+}
+
+/* 第三层列表 - 小圆点 */
+.slidev-layout ul ul ul > li::before {
+  content: "•";
+  font-size: 0.9em;
+}
+
+/* 列表缩进 */
+.slidev-layout ul ul {
+  margin-left: 1.5em;
+  margin-top: 0.3em;
+}
+
+.slidev-layout ul ul ul {
+  margin-left: 1.2em;
+}
+
+/* 红色强调 */
+.red {
+  color: var(--accent-red);
+  font-weight: 600;
+}
+
+/* 一级标题（深红色） */
+h1 {
+  color: var(--title-red) !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.5px;
+  margin-bottom: 20px;
+}
+
+/* 子标题（深蓝） */
+h2 {
+  color: var(--dark-blue) !important;
+  font-weight: 800 !important;
+  -webkit-text-stroke: 0.3px;
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  @apply h-full grid;
+
+  h1 {
+    @apply text-6xl leading-20;
+    color: var(--title-red) !important;
+  }
+
+  h1 + p {
+    @apply -mt-2 opacity-50 mb-4;
+  }
+
+  p + h2,
+  ul + h2,
+  table + h2 {
+    @apply mt-10;
+  }
+}
